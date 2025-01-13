@@ -7,12 +7,12 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest #windows-latest
+    runs-on: ubuntu-latest 
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shard: [1/4, 2/4, 3/4, 4/4]
+      
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -24,7 +24,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      run: npx playwright test --shard=${{ matrix.shard}}
     - name: Merge into HTML Report
       run: npx playwright merge-reports --reporter html ./blob-report
 
@@ -41,7 +41,8 @@ jobs:
         name: blob-report
         path: blob-report/
         retention-days: 3
-        
+ 
+
   merge-reports:
           # Merge reports after playwright-tests, even if some shards have failed
           if: ${{ !cancelled() }}
