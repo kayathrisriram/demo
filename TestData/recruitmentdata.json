@@ -1,0 +1,20 @@
+[
+    {
+       "Id":1,
+        "fname":"kayathri",
+        "lname":"sri",
+        "email":"kayathri.s@gmail.com"
+    },
+    {
+        "Id":2,
+        "fname":"test1",
+        "lname":"automation",
+        "email":"kayathri.s@gmail.com"
+    },
+    {
+        "Id":3,
+        "fname":"test2",
+        "lname":"automation",
+        "email":"kayathri.s@gmail.com"
+    }
+]
